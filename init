@@ -1,0 +1,26 @@
+touch .gitorigin
+git add .gitorigin
+git commit -m "Set origin"
+git tag -a origin -m "Set origin"
+
+git checkout origin
+git remote add origin-check_openvpn https://github.com/liquidat/nagios-icinga-openvpn.git
+git checkout -b check_openvpn
+git pull --allow-unrelated-histories origin-check_openvpn master
+
+
+git checkout origin
+git remote add origin-check_mqtt https://github.com/jpmens/check-mqtt.git
+git checkout -b check_mqtt
+git pull --allow-unrelated-histories origin-check_mqtt master
+
+git checkout origin
+git remote add origin-check_vmware_api https://github.com/op5/check_vmware_api.git
+git checkout -b check_vmware_api
+git pull --allow-unrelated-histories origin-check_vmware_api master
+
+git checkout master
+echo "# monitoring-plugins" >> README.md
+git add README.md
+git commit -m "first commit"
+git push -u origin master
